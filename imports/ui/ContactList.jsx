@@ -6,10 +6,25 @@ export const ContactList = () => {
     const contacts = useTracker(() => { 
         return ContactsCollection.find({}).fetch();}) 
     return (
-        <div>
-            <h3>Contact List</h3>
+        <div className="col-lg-6 rounded m-auto  w-50">
+            <div className="card shadow">
+            <h3 className="m-2 text-center font-weight-bold text-gray-800">Contact List</h3>
             {contacts.map((contact) => (
-                <li key={contact.email}>{contact.name} - {contact.email}</li>))}
+                <li className="list-group-item" key={contact.email}>
+                    <div className='container-fluid'>
+                        <div className="row">
+                        <div className="col-xl-3 col-lg-3 col-md-3">
+                            <img src={contact.imageURL} className="rounded-circle img-fluid" />
+                        </div>
+                        <div className="col-xl-9 col-lg-9 col-md-9">
+                            {contact.name} | {contact.email}
+                        </div>
+                            
+                    </div>
+                    </div>
+                </li>))}
         </div>
+        </div>
+        
     );
 }
