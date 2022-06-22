@@ -4,6 +4,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 
 export const ContactList = () => {
     const contacts = useTracker(() => { 
+        
         return ContactsCollection.find({}).fetch();}) 
     return (
         <div className="col-lg-6 rounded m-auto  w-50">
@@ -14,9 +15,9 @@ export const ContactList = () => {
                     <div className='container-fluid'>
                         <div className="row">
                         <div className="col-xl-3 col-lg-3 col-md-3">
-                            <img src={contact.imageURL} className="rounded-circle img-fluid" />
+                            <img src={contact.imageURL} className="shadow border border-4 rounded-circle img-fluid" />
                         </div>
-                        <div className="col-xl-9 col-lg-9 col-md-9">
+                        <div className={contact.online ? "font-weight-bold text-success col-xl-9 col-lg-9 col-md-9" : "text-gray-600 col-xl-9 col-lg-9 col-md-9"}>
                             {contact.name} | {contact.email}
                         </div>
                             
